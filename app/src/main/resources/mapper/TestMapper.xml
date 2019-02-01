@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ttwb.dal.mapper.TestMapper">
+    <resultMap id="BaseResultMap" type="com.ttwb.api.model.User">
+    </resultMap>
+
+    <select id="getUser" resultMap="BaseResultMap">
+        SELECT 'aa' userName ,'12' age
+        FROM dual
+        WHERE 1=1
+    </select>
+
+
+    <select id="selectUserList" resultMap="BaseResultMap">
+        SELECT USER_NAME userName,Age age
+        FROM TEST_USER
+        WHERE 1=1
+
+        <if test="age != null">
+            <![CDATA[
+                    AND age > #{age}
+                ]]>
+        </if>
+        order by age desc
+
+
+    </select>
+
+</mapper>

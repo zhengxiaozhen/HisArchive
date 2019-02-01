@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+
+    <settings>
+        <setting name="cacheEnabled" value="true"/>
+        <setting name="defaultStatementTimeout" value="3000"/>
+        <setting name="mapUnderscoreToCamelCase" value="true"/>
+        <setting name="lazyLoadingEnabled" value="true"/>
+        <setting name="logImpl" value="LOG4J"/>
+    </settings>
+
+    <!-- Continue going here  分页-->
+    <plugins>
+        <plugin interceptor="com.github.pagehelper.PageHelper">
+            <property name="dialect" value="oracle"/>
+            <property name="reasonable" value="true"/>
+            <property name="offsetAsPageNum" value="true"/>
+            <property name="rowBoundsWithCount" value="true"/>
+            <property name="supportMethodsArguments" value="true"/>
+            <property name="pageSizeZero" value="true"/>
+            <property name="autoRuntimeDialect" value="true"/>
+            <property name="returnPageInfo" value="none"/>
+        </plugin>
+    </plugins>
+
+</configuration>

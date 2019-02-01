@@ -16,7 +16,7 @@
 
     <properties>
         <project.build.sourceEncoding>utf-8</project.build.sourceEncoding>
-        <jdk.version>1.7</jdk.version>
+        <jdk.version>1.8</jdk.version>
         <!-- jersey 版本-->
         <glassfish.jersey.version>2.22.2</glassfish.jersey.version>
         <!-- spring 版本-->
@@ -145,189 +145,64 @@
             <!-- ===============项目模块=============-->
             <!-- exception -->
             <dependency>
-                <groupId>com.fjrlkj.safety</groupId>
+                <groupId>com.ttwb.historyArchive</groupId>
                 <artifactId>exception</artifactId>
                 <version>${project.version}</version>
             </dependency>
 
             <!-- config -->
             <dependency>
-                <groupId>com.fjrlkj.safety</groupId>
+                <groupId>com.ttwb.historyArchive</groupId>
                 <artifactId>config</artifactId>
                 <version>${project.version}</version>
             </dependency>
 
-            <!--mgt-->
             <dependency>
-                <groupId>com.fjrlkj.safety</groupId>
-                <artifactId>mgt-api</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-
-            <dependency>
-                <groupId>com.fjrlkj.safety</groupId>
-                <artifactId>mgt-dal</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-
-            <dependency>
-                <groupId>com.fjrlkj.safety</groupId>
-                <artifactId>mgt-biz</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-
-            <!--safety-fs-->
-            <dependency>
-                <groupId>com.fjrlkj.safety</groupId>
-                <artifactId>fs-dal</artifactId>
+                <groupId>com.ttwb.historyArchive</groupId>
+                <artifactId>web</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
-                <groupId>com.fjrlkj.safety</groupId>
-                <artifactId>fs-biz</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>com.fjrlkj.safety</groupId>
-                <artifactId>fs-api</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-
-            <!--safety-mb-->
-            <dependency>
-                <groupId>com.fjrlkj.safety</groupId>
-                <artifactId>mb-dal</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>com.fjrlkj.safety</groupId>
-                <artifactId>mb-biz</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>com.fjrlkj.safety</groupId>
-                <artifactId>mb-api</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-
-            <!--safety-qz-->
-            <dependency>
-                <groupId>com.fjrlkj.safety</groupId>
-                <artifactId>qz-dal</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>com.fjrlkj.safety</groupId>
-                <artifactId>qz-biz</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>com.fjrlkj.safety</groupId>
-                <artifactId>qz-api</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-
-            <!--safety-sq-->
-            <dependency>
-                <groupId>com.fjrlkj.safety</groupId>
-                <artifactId>sq-dal</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>com.fjrlkj.safety</groupId>
-                <artifactId>sq-biz</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>com.fjrlkj.safety</groupId>
-                <artifactId>sq-api</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-
-            <!--safety-wh-->
-            <dependency>
-                <groupId>com.fjrlkj.safety</groupId>
-                <artifactId>wh-dal</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>com.fjrlkj.safety</groupId>
-                <artifactId>wh-biz</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>com.fjrlkj.safety</groupId>
-                <artifactId>wh-api</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-
-            <!--safety-xs-->
-            <dependency>
-                <groupId>com.fjrlkj.safety</groupId>
-                <artifactId>xs-dal</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>com.fjrlkj.safety</groupId>
-                <artifactId>xs-biz</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>com.fjrlkj.safety</groupId>
-                <artifactId>xs-api</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-
-            <!--safety-yh-->
-            <dependency>
-                <groupId>com.fjrlkj.safety</groupId>
-                <artifactId>yh-dal</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>com.fjrlkj.safety</groupId>
-                <artifactId>yh-biz</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>com.fjrlkj.safety</groupId>
-                <artifactId>yh-api</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-
-
-            <!--safety-zb-->
-            <dependency>
-                <groupId>com.fjrlkj.safety</groupId>
-                <artifactId>zb-dal</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>com.fjrlkj.safety</groupId>
-                <artifactId>zb-biz</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>com.fjrlkj.safety</groupId>
-                <artifactId>zb-api</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-
-            <!--user-->
-            <dependency>
-                <groupId>com.fjrlkj.safety</groupId>
-                <artifactId>user</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-
-            <!--jersey-->
-            <dependency>
-                <groupId>com.fjrlkj.safety</groupId>
-                <artifactId>jersey-ext</artifactId>
+                <groupId>com.ttwb.historyArchive</groupId>
+                <artifactId>app</artifactId>
                 <version>${project.version}</version>
             </dependency>
 
             <!-- ===================jersey各类jar包=================-->
+            <!-- Jersey  -->
+            <!--<dependency>
+                <groupId>com.sun.jersey</groupId>
+                <artifactId>jersey-server</artifactId>
+                <version>1.8</version>
+            </dependency>
+            &lt;!&ndash; Jersey + Spring &ndash;&gt;
+            <dependency>
+                <groupId>com.sun.jersey.contribs</groupId>
+                <artifactId>jersey-spring</artifactId>
+                <version>1.8</version>
+                <exclusions>
+                    <exclusion>
+                        <groupId>org.springframework</groupId>
+                        <artifactId>spring</artifactId>
+                    </exclusion>
+                    <exclusion>
+                        <groupId>org.springframework</groupId>
+                        <artifactId>spring-core</artifactId>
+                    </exclusion>
+                    <exclusion>
+                        <groupId>org.springframework</groupId>
+                        <artifactId>spring-web</artifactId>
+                    </exclusion>
+                    <exclusion>
+                        <groupId>org.springframework</groupId>
+                        <artifactId>spring-beans</artifactId>
+                    </exclusion>
+                    <exclusion>
+                        <groupId>org.springframework</groupId>
+                        <artifactId>spring-context</artifactId>
+                    </exclusion>
+                </exclusions>
+            </dependency>-->
             <dependency>
                 <groupId>org.glassfish.jersey.containers</groupId>
                 <artifactId>jersey-container-servlet</artifactId>
