@@ -4,10 +4,15 @@
 # 模块描述
 
 spring +springmvc +jersey +mybatis
+#############################
+
 jersey:
-http://localhost:8080/history-archive/api/path/hello
+http://localhost:8080/history-archive/path/hello
+#############################
+
 springmvc
 http://localhost:8080/history-archive/mvc/hello
+#############################
 
 http://localhost:8080/history-archive/index
 
