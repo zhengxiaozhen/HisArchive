@@ -1,7 +1,7 @@
 package com.ttwb.api.controller;
 
 import com.ttwb.api.model.User;
-import com.ttwb.api.service.impl.TestServiceImpl;
+import com.ttwb.api.service.TestService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
@@ -17,7 +17,7 @@ import java.util.List;
 public class TestController
 {
     @Autowired
-    TestServiceImpl testService;
+    TestService testService;
 
 
 

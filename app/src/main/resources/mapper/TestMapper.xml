@@ -3,6 +3,10 @@
 <mapper namespace="com.ttwb.dal.mapper.TestMapper">
     <resultMap id="BaseResultMap" type="com.ttwb.api.model.User">
     </resultMap>
+    <delete id="deleteByName" parameterType="string">
+    delete from TEST_USER
+    where "USER_NAME" = #{name,jdbcType=NVARCHAR}
+    </delete>
 
     <select id="getUser" resultMap="BaseResultMap">
         SELECT 'aa' userName ,'12' age
@@ -24,6 +28,17 @@
         order by age desc
 
 
+    </select>
+    <select id="selectUserByName" resultMap="BaseResultMap">
+        select user_name userName,age age
+        from TEST_USER
+        WHERE 1=1
+        <if test="name != null">
+            and USER_NAME=#{name}
+        </if>
+        <![CDATA[
+        and rownum<2
+          ]]>
     </select>
 
 </mapper>

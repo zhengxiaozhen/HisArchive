@@ -56,7 +56,7 @@
     </servlet>
     <servlet-mapping>
         <servlet-name>jersey-serlvet</servlet-name>
-        <url-pattern>/api/*</url-pattern>
+        <url-pattern>/api/*</url-pattern><!--只拦截/api/下的文件-->
     </servlet-mapping>
 
     <!-- spring mvc -->

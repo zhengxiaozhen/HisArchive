@@ -12,6 +12,8 @@ public interface TestService
 {
     List<User> getUser();
     Object getUserPageList(Integer age, int offset, int limit);
+    User getUserInfo(String name);
 
+    void deleteUserInfo(String name);
 
 }

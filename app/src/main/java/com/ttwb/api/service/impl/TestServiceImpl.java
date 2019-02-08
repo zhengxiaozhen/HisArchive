@@ -8,14 +8,16 @@ import com.ttwb.api.service.TestService;
 import com.ttwb.dal.mapper.TestMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.TransactionStatus;
+import org.springframework.transaction.support.TransactionCallback;
 import org.springframework.transaction.support.TransactionTemplate;
+import org.springframework.util.StringUtils;
 
 import java.util.List;
 
 /**
  * Created by user on 2017/1/21.
  */
-
 @Service
 public class TestServiceImpl implements TestService
 {
@@ -51,4 +53,35 @@ public class TestServiceImpl implements TestService
     }
 
 
+    @Override
+    public User getUserInfo(String name)
+    {
+
+
+
+        User user = testMapper.selectUserByName(name);
+
+        return user;
+    }
+
+    @Override
+    public void deleteUserInfo(String name)
+    {
+        if (StringUtils.isEmpty(name))
+        {
+            return;
+        }
+
+        transactionTemplate.execute(new TransactionCallback<Void>()
+        {
+            @Override
+            public Void doInTransaction(TransactionStatus transactionStatus)
+            {
+
+                testMapper.deleteByName(name);
+                return null;
+            }
+        });
+
+    }
 }

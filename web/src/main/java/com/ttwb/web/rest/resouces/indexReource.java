@@ -1,11 +1,15 @@
 package com.ttwb.web.rest.resouces;
 
+import com.alibaba.fastjson.JSON;
 import com.ttwb.api.controller.TestController;
 import com.ttwb.api.model.User;
+import com.ttwb.api.service.TestService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
 
+import javax.ws.rs.*;
+import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
 import java.util.List;
 
 
@@ -16,24 +20,50 @@ import java.util.List;
  * @Created by zhoulq
  */
 @Controller
-@RequestMapping("/mvc")
+@Produces(MediaType.APPLICATION_JSON)
+@Path("/mvc")
 public class indexReource
 {
     @Autowired
     TestController testController;
-    @RequestMapping("/hello")
-    public String getStudent()
+    @Autowired
+    TestService testService;
+    @GET
+    @Path("/hello")
+    public Response getStudent()
     {
         System.out.println("调用到视图");
 
         List<User> list=testController.testUser();
+        String name="";
+        String age="";
         for (User user : list)
         {
             System.out.println("name:"+user.getUserName());
             System.out.println("age:"+user.getAge());
-
+            name=user.getUserName();
+            age=user.getAge().toString();
         }
-        return "hello";
+        String str = JSON.toJSONString(list);
+       return Response.ok(str).build();
+        //return "hello";
     }
+
+    @GET
+    @Path("getUserInfo")
+    public Response getFsEnterpriseInfo(@QueryParam("name")String name) {
+        User obj = testService.getUserInfo(name);
+        return Response.ok(obj).build();
+    }
+
+
+    //@DELETE
+    @GET
+    @Path("deleteUserInfo")
+    public Response deleteRadioLicense(@QueryParam("name")String name) {
+        testService.deleteUserInfo(name);
+        return Response.ok().build();
+    }
+
 }
 
