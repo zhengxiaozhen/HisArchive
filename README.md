@@ -14,7 +14,7 @@ springmvc
 http://localhost:8080/history-archive/api/mvc/hello
 #############################
 
-http://localhost:8080/history-archive/web/index
+http://localhost:8080/history-archive/index
 
 
 
