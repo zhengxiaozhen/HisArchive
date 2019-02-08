@@ -28,14 +28,6 @@
             <list>
                 <!--自动扫描的文件-->
                 <value>classpath:/mapper/*Mapper.xml</value>
-                <!--<value>classpath:fs/mapper/*Mapper.xml</value>
-                <value>classpath:mb/mapper/*Mapper.xml</value>
-                <value>classpath:qz/mapper/*Mapper.xml</value>
-                <value>classpath:sq/mapper/*Mapper.xml</value>
-                <value>classpath:wh/mapper/*Mapper.xml</value>
-                <value>classpath:xs/mapper/*Mapper.xml</value>
-                <value>classpath:yh/mapper/*Mapper.xml</value>
-                <value>classpath:zb/mapper/*Mapper.xml</value>-->
             </list>
         </property>
     </bean>

@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+	<title>完善个人信息</title>
+	<meta charset="UTF-8" />
+	<link rel="stylesheet" href="../../css/supervise/bootstrap.css" th:href="@{/safety/css/supervise/bootstrap.css}"/>
+	<link rel="stylesheet" href="../../css/supervise/style.css" th:href="@{/safety/css/supervise/style.css}" />
+</head>
+<body style="background: #F7F7F7;">
+	<div class="container containea">
+		<!--头部信息开始-->
+		<div class="col-sm-12 Hmation">
+			<h4>完善个人信息</h4>
+		</div>
+		<!--头部信息结束-->
+		<div class="mation_b">
+			<!--内容开始-->
+			<div class="col-md-10 mation_a">
+				<div class="col-sm-3 Lehead">
+					尊敬的用户，您好:
+				</div>
+				<br>
+				<p class="lead specific">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;为加强对【<a>福建省危险物品“一体化”安全监管信息平台</a>】的安全保护，保证系统的安全稳定运行，应系统安全审计要求，登录系统用户需完善个人的身份信息，系统检测到您当前身份信息未完善，请先完善。</p>
+			</div>
+			<!--内容结束-->
+			<!--表单开始-->
+			<div class="login-content">
+				<form class="form-horizontal fom" role="form" id="nqs-add-userxinxi-form" style="text-align: center;">
+			      	<div class="form-group">
+			            <label class="col-sm-2 control-label">姓名</label>
+			            <div class="col-xs-10">
+			              <input type="text" class="form-control" id="userName" name="uiUserName" placeholder="" th:value="${currentUser.name}"/>
+			            </div>
+			      	</div>
+			      	<div class="form-group">
+			            <label class="col-sm-2 control-label">身份证</label>
+			            <div class="col-xs-10">
+			              <input type="text" class="form-control" id="idCardNumber" name="uiIdcardNumber" placeholder=""/>
+			            </div>
+			      	</div>
+			      	<div class="form-group">
+			            <div class="col-sm-10 tton">
+			              <button type="button" class="btn btn-primary btn-block" style="text-align: center;" onclick="updateInfo()">保存</button>
+			            </div>
+			      	</div>
+			    </form>
+			</div>
+		    <!--表单结束-->
+		</div>
+	</div>
+</body>
+<script src="../../js/supervise/jquery.min.js" th:src="@{/safety/js/supervise/jquery.min.js}"></script>
+<script src="../../js/supervise/bootstrap.min.js" th:src="@{/safety/js/supervise/bootstrap.min.js}"></script>
+<script src="../../js/supervise/bootstrapValidator.js" th:src="@{/safety/js/supervise/bootstrapValidator.js}"></script>
+<script src="../../js/supervise/html5shiv.js" th:src="@{/safety/js/supervise/html5shiv.js}"></script>
+<script src="../../js/supervise/respond.min.js" th:src="@{/safety/js/supervise/respond.min.js}"></script>
+<script src="../../js/supervise/des.js" th:src="@{/safety/js/supervise/des.js}"></script>
+<script type="text/javascript" th:src="@{/safety/js/identityCardUtil.js?v=20170824}"></script>
+
+<script type="text/javascript">
+	function getQueryString(name) {
+		var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)","i");
+		var r = window.location.search.substr(1).match(reg);
+		if (r!=null) return (r[2]); return null;
+	}
+
+	function updateInfo() {
+		var accessToken = getQueryString('access-token');
+		var moduleId = getQueryString('moduleId');
+		var userName = $('#userName').val();
+		var idCardNumber = $('#idCardNumber').val();
+		var flag = true;
+		var idCardStr = strEnc(idCardNumber,"1","2","3");
+		$.ajax({
+			type: 'POST',
+			url: 'api/check/checkUserNameAndIdCard?access-token=' + accessToken,
+			async: false,
+			dataType: 'json',
+			data: {
+				userName: $('#userName').val(),
+				idCard: idCardStr
+			},
+			success: function (result) {
+				if (result.code == 0) {
+					if(result.data == null || result.data == '' || result.data == 'undefined'){
+
+					}else{
+						alert(result.data);
+						flag = false;
+					}
+				} else {
+					alert(result.message);
+				}
+			}
+		});
+		if(flag){
+			$.ajax({
+				type: 'POST',
+				url: 'api/user/updateIdCardById?access-token=' + accessToken,
+				async: false,
+				async: false,
+				dataType: 'json',
+				data: {
+					userName: $('#userName').val(),
+					idCard: idCardStr
+				},
+				success: function (result) {
+					if (result.code == 0) {
+						alert("已成功完善个人信息");
+						location.href = '/safety/system?moduleId='+moduleId+'&access-token='+accessToken;
+					} else {
+						alert(result.message);
+					}
+				}
+			});
+		}
+	}
+</script>
+</html>

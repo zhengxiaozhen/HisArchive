@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html ng-app="menu" lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <title th:text="${moduleName}"></title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../../css/menu/bootstrap.min.css" th:href="@{/safety/css/menu/bootstrap.min.css}"/>
+    <link rel="stylesheet" href="../../css/menu/matrix-style.css" th:href="@{/safety/css/menu/matrix-style.css?v=20170801}" />
+    <link rel="stylesheet" href="../../css/menu/matrix-media.css" th:href="@{/safety/css/menu/matrix-media.css?v=20170524}" />
+    <link rel="stylesheet" href="../../css/menu/font-awesome/css/font-awesome.css" th:href="@{/safety/css/menu/font-awesome/css/font-awesome.css}" />
+    <script type="text/javascript" th:src="@{/safety/lib/angular/angular-1.6.1/angular.min.js}"></script>
+    <script type="text/javascript" th:src="@{/safety/js/menu/menuIndexCtrl.js?v=20170524}"></script>
+    <script>
+        var getQueryString = function(name) {
+            var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)","i");
+            var r = window.location.search.substr(1).match(reg);
+            if (r!=null) return (r[2]); return null;
+        }
+        function logout() {
+            var accessToken = getQueryString('access-token');
+            var moduleId = getQueryString('moduleId');
+            $.ajax({
+                type: 'GET',
+                url: 'api/user/logout?access-token=' + accessToken,
+                success: function(data) {
+                    if(moduleId=='-8'){
+                        location.href = '/web/pages/transitLogin.jsp?moduleId=' + Math.abs(parseInt(moduleId));
+                    }else{
+                        location.href = '/web/pages/login.jsp?moduleId=' + Math.abs(parseInt(moduleId));
+                    }
+                }
+            });
+        }
+        function hideMenu(){
+            var winHeight = $(window).height();
+            if($("#top-menu").is(":hidden")){
+                $("#top-menu").show();
+                $("#sidebarOut").show();
+                $('#content').css("margin-left","230px");
+                $("#hidebar").find("span").html("&nbsp;隐藏菜单");
+                $("#hidebar").find("i").removeClass("icon icon-fullscreen").addClass("icon icon-resize-small");
+                $("#iframe-main").height(winHeight-180);
+            }else{
+                $("#top-menu").hide();
+                $("#sidebarOut").hide();
+                $('#content').css("margin-left","0");
+                $("#hidebar").find("span").html("&nbsp;显示菜单");
+                $("#hidebar").find("i").removeClass("icon icon-resize-small").addClass("icon icon-fullscreen");
+                $("#iframe-main").height(winHeight-66);
+            }
+        }
+    </script>
+    <style>
+        #red a{
+            color:blue;
+            cursor:pointer;
+        }
+    </style>
+</head>
+<body ng-controller="menuIndexCtrl" >
+    <!--Header-part-->
+    <div id="header">
+      <h1><a  href="#">福建省<span th:text="${moduleName}"></span></a></h1>
+      <i></i>
+    </div>
+    <!--close-Header-part--> 
+
+    <!--top-user-nav-->
+    <div id="user-nav" class="navbar navbar-inverse">
+        <ul class="nav">
+            <li  class="dropdown" id="module-list" >
+                <a title="" href="#" data-toggle="dropdown" data-target="#module-list" class="dropdown-toggle">
+                    <i th:class="${currentModule.icon}"></i>&nbsp;
+                    <span class="text"><span th:text="${currentModule.name}"></span></span>&nbsp;
+                    <b class="caret"></b>
+                </a>
+                <ul class="dropdown-menu">
+                    <li th:each="module:${moduleList}"><a th:attr="href='/safety/system?moduleId='+${module.id}+'&access-token='+${currentUser.accessToken}"><i th:class="${module.icon}"></i><span th:text="${module.name}"></span></a></li>
+                </ul>
+            </li>
+            <li  class="dropdown" id="profile-messages" >
+                <a title="" href="#" data-toggle="dropdown" data-target="#profile-messages" class="dropdown-toggle">
+                    <i class="icon icon-user"></i>&nbsp;
+                    <span class="text">欢迎你，<span th:text="${currentUser.name}"></span></span>&nbsp;
+                    <b class="caret"></b>
+                </a>
+                <ul class="dropdown-menu">
+                    <li><a th:attr="href='/safety/system?moduleId='+${moduleId}+'&topMenuName=系统管理&leftMenuTypeName=个人资料&access-token='+${currentUser.accessToken}"><i class="icon-user"></i> 个人资料</a></li>
+                </ul>
+            </li>
+            <li class="" id="hidebar"><a title="" href="#" onclick="hideMenu()"><i class="icon icon-resize-small"></i> <span class="text">&nbsp;隐藏菜单</span></a></li>
+            <li class=""><a title="" href="#" onclick="logout()"><i class="icon icon-share-alt"></i> <span class="text">&nbsp;退出系统</span></a></li>
+        </ul>
+    </div>
+    <!--close-top-user-nav-->
+    
+    <!-- top-menu -->
+    <div id="top-menu" class="top-menu">
+        <div class="left-button"  ng-if="isDisplayMoveButton">
+            <div class="move-button">
+                <a ng-click="moveRight($event)"></a>
+            </div>
+        </div>
+        <div class="center-container" ng-class="{'not-has-move-button':!isDisplayMoveButton}">
+            <ul>
+                <li th:each="topMenu,topMenuStat:${topMenuList}" th:class="${topMenu.id}==${resourceId} ? 'cur'"><a th:attr="href='/safety/system?moduleId='+${moduleId}+'&resourceId='+${topMenu.id}+'&access-token='+${currentUser.accessToken}+''">
+                    <i th:attr="resourceId=''+${topMenu.id}+''"  th:class="${topMenu.style}"></i>
+                    <div th:text="${topMenu.name}"></div>
+                </a></li>
+            </ul>
+        </div>
+        <div class="right-button"  ng-if="isDisplayMoveButton">
+            <div class="move-button">
+                <a ng-click="moveLeft($event)"></a>
+            </div>
+        </div>
+    </div>
+    <!-- close-top-menu -->
+
+
+    <!--sidebar-menu-->
+    <div id="sidebarOut">
+        <div id="sidebarIn" class="sidebar-in">
+            <div id="sidebar">
+                <ul>
+                    <li th:each="leftMenu,leftMenuStat:${leftMenuList}" th:class="${leftMenu.isActive}">
+                        <a class="menu_a" th:attr = "link=''+${leftMenu.url}+'&access-token='+${currentUser.accessToken}+'&mgtResourceId='+${leftMenu.id}" th:if="(${leftMenu.url}) and (${leftMenu.children.size() == 0}) and ${#strings.contains(leftMenu.url,'?')}"><i></i><span th:text="${leftMenu.name}"></span></a>
+                        <a class="menu_a" th:attr = "link=''+${leftMenu.url}+'?access-token='+${currentUser.accessToken}+'&mgtResourceId='+${leftMenu.id}" th:if="(${leftMenu.url}) and (${leftMenu.children.size() == 0}) and (!${#strings.contains(leftMenu.url,'?')})"><i></i><span th:text="${leftMenu.name}"></span></a>
+                        <a href="#" th:if="${leftMenu.children.size() == 0} and (!${leftMenu.url})"><i></i><span th:text="${leftMenu.name}"></span></a>
+                        <a href="#" th:if="${leftMenu.children.size() != 0}"><i></i><span th:text="${leftMenu.name}"></span></a>
+                        <ul th:if ="${leftMenu.children.size() != 0}">
+                            <li th:each="menu,menuStat:${leftMenu.children}" th:class="${menu.isActive}"><a class="menu_a" th:attr = "link=''+${menu.url}+'&access-token='+${currentUser.accessToken}+'&mgtResourceId='+${menu.id}" th:if="(${menu.url}) and (${#strings.contains(menu.url,'?')})"><span th:text="${menu.name}"></span></a></li>
+                            <li th:each="menu,menuStat:${leftMenu.children}" th:class="${menu.isActive}"><a class="menu_a" th:attr = "link=''+${menu.url}+'?access-token='+${currentUser.accessToken}+'&mgtResourceId='+${menu.id}" th:if="(${menu.url}) and (!${#strings.contains(menu.url,'?')})"><span th:text="${menu.name}"></span></a></li>
+                            <li th:each="menu,menuStat:${leftMenu.children}" th:class="${menu.isActive}"><a class="menu_a" th:if="!${menu.url}"><span th:text="${menu.name}"></span></a></li>
+                        </ul>
+                    </li>
+                    <!-- 静态测试 -->
+                    <!-- <li class="submenu">
+                        <a href="#"><i></i>制造单位信息管理制造单位信息管理</a>
+                        <ul>
+                            <li><a class="menu_a" link="error404.html">制造单位信息查询制造单位信息管理</a></li>
+                            <li><a class="menu_a" link="error405.html">制造单位信息管理制造单位信息管理</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a class="menu_a" link="error403.html"><i></i>制造单位信息管理制造单位信息管理</a>
+                    </li> -->
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!--sidebar-menu-->
+
+    <!--main-container-part-->
+    <div id="content">
+        <iframe th:src="${defaultUrl}" id="iframe-main" frameborder='0' style="width:100%;"></iframe>
+    </div>
+    <!--end-main-container-part-->
+
+    <script src="../../js/menu/jquery.min.js" th:src="@{/safety/js/menu/jquery.min.js}"></script>
+    <script src="../../js/menu/bootstrap.min.js" th:src="@{/safety/js/menu/bootstrap.min.js}"></script>
+    <script src="../../js/menu/matrix.js" th:src="@{/safety/js/menu/matrix.js}"></script>
+    <link rel="stylesheet" href="../../js/layer/theme/default/layer.css" th:href="@{/safety/js/layer/theme/default/layer.css}"/>
+    <script src="../../js/layer/layer.js" th:src="@{/safety/js/layer/layer.js}"></script>
+
+
+    <script type="text/javascript">
+
+    //初始化相关元素高度
+    function init(){
+        var winHeight = $(window).height();
+        $("body").height(winHeight);
+        if($("#top-menu").is(":hidden")){
+            $("#iframe-main").height(winHeight-66);
+            $("#sidebarOut").height(winHeight-66);
+        }else{
+            $("#iframe-main").height(winHeight-180);
+            $("#sidebarOut").height(winHeight-180);
+        }
+    }
+
+    $(function(){
+        isAlert = true;
+        init();
+        $(window).resize(function(){
+            init();
+        });
+        if(GetQueryString("resourceId") == null) {
+            getMbEnterpriseForCheck();
+        }
+    });
+
+    var int=self.setInterval("adminIndexClock()",180000);
+    var accessToken = getQueryString('access-token');
+    function adminIndexClock(){
+        $.ajax({
+            type: 'GET',
+            url: 'http://' + location.host + '/admin/index.jsp?access-token=' + accessToken,
+            success: function(data) {
+            }
+        });
+    }
+
+    var GetQueryString = function(name) {
+        var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)","i");
+        var r = window.location.search.substr(1).match(reg);
+        if (r!=null) return (r[2]); return null;
+    }
+
+    function getMbEnterpriseForCheck(){
+        $.ajax({
+            type: 'get',
+            url: 'http://' + location.host + '/safety/api/mb/4/burstEnterprise/getMbEnterpriseForCheck?access-token=' + accessToken+"&dangerType="+(-GetQueryString("moduleId")),
+            success: function(data) {
+                var mes = "";
+                mes += "<div id='red'>";
+                var enterpriseId = "";
+                var enterpriseName = "";
+                var todo = "";
+                if(data.data.length != 0) {
+                    for(var i = 0;i<data.data.length;i++){
+                        enterpriseId = data.data[i].enterpriseId;
+                        enterpriseName = data.data[i].enterpriseName;
+                        todo = data.data[i].todo;
+                        if(data.data.length == 1) {
+                            if(data.data[i].regionLevel == "县级") {
+                                mes += "<p>"+getMes(enterpriseId,enterpriseName,data.data[i])+"</p>";
+                            }else{
+                                mes += "<p>按要求"+(data.data[i].scoreSum >= 11 ? "本季度" : "本年")+"您需要对区划内的“" + enterpriseName + "”进行"
+                                +(todo == 0 ? "新建" : "登记")+"检查，<a onclick='toCheck("+(data.data[i].scoreSum >= 11 ? 2 : 3) + "," +enterpriseId+",\""+enterpriseName+"\","+(todo == 0 ? 1 : 2)
+                                +")'>点击前往"+(todo == 0 ? "新建" : "登记")+"检查任务</a></p>";
+                            }
+                        }else{
+                            if(data.data[i].regionLevel == "县级") {
+                                mes += "<p>" + (i + 1) + "、 "+getMes(enterpriseId,enterpriseName,data.data[i])+"</p>";
+                            }else{
+                                mes += "<p>" + (i + 1) + "、 按要求"+(data.data[i].scoreSum >= 11 ? "本季度" : "本年")+"您需要对区划内的“" + enterpriseName
+                                + "”进行"+(todo == 0 ? "新建" : "登记")+"检查，<a onclick='toCheck("+(data.data[i].scoreSum >= 11 ? 2 : 3) + ","+enterpriseId+",\""+enterpriseName+"\","
+                                +(todo == 0 ? 1 : 2)
+                                +")'>点击前往"+(todo == 0 ? "新建" : "登记")+"检查任务</a></p>";
+                            }
+                        }
+                    }
+                    mes += "</div>";
+                    if(isAlert == true) {
+                        layer.alert(mes, {area: ['45%', '40%']});
+                    }else{
+                        mes = mes.replace("<div id='red'>","");
+                        mes = mes.replace("</div>","");
+                        $("#red").html(mes);
+                    }
+                    isAlert = false;
+                }else{
+                    layer.closeAll();
+                }
+            }
+        });
+    }
+
+    function getTaskId(enterpriseId){
+        var res = "";
+        $.ajax({
+            type: 'get',
+            url: 'http://' + location.host + '/safety/api/mb/4/burstEnterprise/getTaskId?access-token=' + accessToken+"&enterpriseId="+enterpriseId,
+            async : false,
+            success: function(data) {
+                res = data.data;
+            }
+        });
+        return res;
+    }
+
+    function getMes(enterpriseId,enterpriseName,param){
+        var str = "";
+        str +=  "按要求本月您需要对区划内的“" + enterpriseName + "”进行";
+        if(param.scoreSum >= 11){
+            if(param.todo + param.finish == 0){
+                str += "2次新建检查,<a onclick='toCheck(1,"+enterpriseId+",\""+enterpriseName+"\",1)'>点击前往新建检查任务</a>";
+            }else if(param.todo == 1 && param.finish == 0){
+                str += "1次新建检查,<a onclick='toCheck(1,"+enterpriseId+",\""+enterpriseName+"\",1)'>点击前往新建检查任务</a>,1次登记检查,<a onclick='toCheck(1,"+enterpriseId+",\""+enterpriseName+"\",2)'>点击前往登记检查任务</a>";
+            }else if(param.todo == 1 && param.finish == 1){
+                str += "1次登记检查,<a onclick='toCheck(1,"+enterpriseId+",\""+enterpriseName+"\",2)'>点击前往登记检查任务</a>";
+            }else if(param.todo == 0 && param.finish == 1){
+                str += "1次新建检查,<a onclick='toCheck(1,"+enterpriseId+",\""+enterpriseName+"\",1)'>点击前往新建检查任务</a>";
+            }else if(param.todo == 2){
+                str += "2次登记检查,<a onclick='toCheck(1,"+enterpriseId+",\""+enterpriseName+"\",2)'>点击前往登记检查任务</a>";
+            }else{
+                str += "2次新建检查,<a onclick='toCheck(1,"+enterpriseId+",\""+enterpriseName+"\",1)'>点击前往新建检查任务</a>";
+            }
+        }else{
+            str += (param.todo == 0 ? "新建" : "登记") + "检查，<a onclick='toCheck(1,"+enterpriseId+",\""+enterpriseName+"\","+(param.todo == 0 ? 1 : 2)+")'>点击前往" + (param.todo == 0 ? "新建" : "登记") + "检查任务</a>";
+        }
+        return str;
+    }
+
+
+
+    function toCheck(date,enterpriseId,enterpriseName,param){
+//            layer.closeAll('dialog');
+        var url = "";
+        if(param == 2){
+            var taskId = getTaskId(enterpriseId);
+            url = "http://" + location.host + "/web/jsp/pages-teamwork-remain-resultinput.do?dangerType=" + (-GetQueryString("moduleId")) + "&access-token=" + accessToken + "&isUnion=2&taskId=" + taskId;
+        }else{
+            url = "http://" + location.host + "/web/jsp/pages-collaboration-checkplan-checkplanedit.do?dangerType=" + (-GetQueryString("moduleId")) + "&access-token=" + accessToken + "&enterpriseNames=" + enterpriseName + "&enterpriseIds=" + enterpriseId + "&date=" + date;
+        }
+        layer.open({
+            type: 2,
+            area: ['80%', '80%'],
+            fixed: false, //不固定
+            content: url,
+            title:param == 1 ? '创建独立检查任务' : '登记独立检查任务',
+            cancel: function(){
+                getMbEnterpriseForCheck();
+            }
+        });
+    }
+    </script>
+</body>
+</html>
