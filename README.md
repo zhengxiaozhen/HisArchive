@@ -16,6 +16,8 @@ http://localhost:8080/history-archive/api/mvc/hello
 
 http://localhost:8080/history-archive/index
 
+http://localhost:8080/history-archive/api/mvc/getUserInfo?name=ds
+http://localhost:8080/history-archive/api/mvc/deleteUserInfo?name=AAAA
 
 
 #############################
