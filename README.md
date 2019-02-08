@@ -7,14 +7,14 @@ spring +springmvc +jersey +mybatis
 #############################
 
 jersey:
-http://localhost:8080/history-archive/path/hello
+http://localhost:8080/history-archive/api/path/hello
 #############################
 
 springmvc
-http://localhost:8080/history-archive/mvc/hello
+http://localhost:8080/history-archive/api/mvc/hello
 #############################
 
-http://localhost:8080/history-archive/index
+http://localhost:8080/history-archive/web/index
 
 
 
