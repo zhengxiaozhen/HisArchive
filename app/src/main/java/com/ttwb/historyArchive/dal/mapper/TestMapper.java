@@ -1,7 +1,7 @@
-package com.ttwb.dal.mapper;
+package com.ttwb.historyArchive.dal.mapper;
 
 
-import com.ttwb.api.model.User;
+import com.ttwb.historyArchive.api.model.User;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;

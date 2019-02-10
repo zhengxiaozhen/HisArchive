@@ -1,9 +1,9 @@
-package com.ttwb.web.rest.resouces;
+package com.ttwb.historyArchive.web.rest.resouces;
 
 import com.alibaba.fastjson.JSON;
-import com.ttwb.api.controller.TestController;
-import com.ttwb.api.model.User;
-import com.ttwb.api.service.TestService;
+import com.ttwb.historyArchive.api.controller.TestController;
+import com.ttwb.historyArchive.api.model.User;
+import com.ttwb.historyArchive.api.service.TestService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
@@ -22,7 +22,7 @@ import java.util.List;
 @Controller
 @Produces(MediaType.APPLICATION_JSON)
 @Path("/mvc")
-public class indexReource
+public class IndexReource
 {
     @Autowired
     TestController testController;

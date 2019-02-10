@@ -8,7 +8,7 @@
     <!--***********数据分析数据源配置*******************************-->
     <!--**********************************************************-->
 
-    <!--  TransactionManager定义  事务配置   -->
+    <!--  TransactionManager定义  事务配置  jdbc事务模板 -->
     <bean id="txManager"
           class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
         <property name="dataSource" ref="datasource"/>
@@ -32,11 +32,11 @@
         </property>
     </bean>
 
-    <bean id="fullBeanNameGenerator" class="com.ttwb.historyArchive.FullBeanNameGenerator"/>
+    <bean id="fullBeanNameGenerator" class="com.ttwb.historyArchive.config.FullBeanNameGenerator"/>
 
     <!--mapper扫描根据类名配置-->
     <bean id="mapperScannerConfigurer" class="org.mybatis.spring.mapper.MapperScannerConfigurer">
-        <property name="basePackage" value="com.ttwb.dal.mapper"/>
+        <property name="basePackage" value="com.ttwb.historyArchive.dal.mapper"/>
         <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"/>
         <property name="nameGenerator" ref="fullBeanNameGenerator"/>
     </bean>

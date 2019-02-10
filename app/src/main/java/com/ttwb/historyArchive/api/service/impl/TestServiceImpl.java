@@ -1,13 +1,12 @@
-package com.ttwb.api.service.impl;
+package com.ttwb.historyArchive.api.service.impl;
 
 
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
-import com.ttwb.api.model.User;
-import com.ttwb.api.service.TestService;
-import com.ttwb.dal.mapper.TestMapper;
+import com.ttwb.historyArchive.api.model.User;
+import com.ttwb.historyArchive.api.service.TestService;
+import com.ttwb.historyArchive.dal.mapper.TestMapper;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 import org.springframework.transaction.TransactionStatus;
 import org.springframework.transaction.support.TransactionCallback;
 import org.springframework.transaction.support.TransactionTemplate;
@@ -18,7 +17,7 @@ import java.util.List;
 /**
  * Created by user on 2017/1/21.
  */
-@Service
+//@Service   bean.xml配置通用的bean实例化
 public class TestServiceImpl implements TestService
 {
 
@@ -61,12 +60,12 @@ public class TestServiceImpl implements TestService
             return;
         }
 
-        transactionTemplate.execute(new TransactionCallback<Void>()
+        transactionTemplate.execute(new TransactionCallback()
         {
+            //Object :表示执行doInTransaction方法返回的结果
             @Override
-            public Void doInTransaction(TransactionStatus transactionStatus)
+            public Object doInTransaction(TransactionStatus transactionStatus)
             {
-
                 testMapper.deleteByName(name);
                 return null;
             }

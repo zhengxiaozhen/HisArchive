@@ -11,6 +11,8 @@
     <!--加载数据库配置文件及mybatis配置 -->
     <import resource="classpath*:dal.xml"/>
 
+    <!--bean注入规则-->
+    <import resource="classpath*:bean.xml"/>
     <!--加载业务模块-->
    <!-- <import resource="classpath*:mgt-biz.xml"/>
     <import resource="classpath*:fs-biz.xml"/>

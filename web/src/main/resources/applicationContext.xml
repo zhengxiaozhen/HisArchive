@@ -10,7 +10,7 @@
 
 <import resource="classpath*:biz.xml"></import>
    <!-- 注解扫描包 -->
-   <context:component-scan base-package="com.ttwb." />
+   <context:component-scan base-package="com.ttwb" />
 
    <mvc:default-servlet-handler />
 

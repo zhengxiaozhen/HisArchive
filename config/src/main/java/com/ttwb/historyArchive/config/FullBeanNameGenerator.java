@@ -1,4 +1,4 @@
-package com.ttwb.historyArchive;
+package com.ttwb.historyArchive.config;
 
 import org.springframework.beans.factory.config.BeanDefinition;
 import org.springframework.context.annotation.AnnotationBeanNameGenerator;

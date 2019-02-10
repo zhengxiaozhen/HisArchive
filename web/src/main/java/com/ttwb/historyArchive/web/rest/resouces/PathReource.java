@@ -1,9 +1,9 @@
-package com.ttwb.web.rest.resouces;
+package com.ttwb.historyArchive.web.rest.resouces;
 
 import com.github.pagehelper.PageInfo;
-import com.ttwb.api.controller.TestController;
-import com.ttwb.api.model.User;
-import com.ttwb.api.service.TestService;
+import com.ttwb.historyArchive.api.controller.TestController;
+import com.ttwb.historyArchive.api.model.User;
+import com.ttwb.historyArchive.api.service.TestService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -23,7 +23,7 @@ import javax.ws.rs.core.Response;
 @Component
 @Produces(MediaType.APPLICATION_JSON)
 @Path("/path")
-public  class pathReource
+public  class PathReource
 {
     @Autowired
     TestController testController;
