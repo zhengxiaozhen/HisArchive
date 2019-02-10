@@ -28,20 +28,12 @@ public class TestServiceImpl implements TestService
     @Autowired
     private TransactionTemplate transactionTemplate;
 
-   /* @Override
-    public int insertAudit(AuditEnterpriseInfo auditEnterpriseInfo)
-    {
 
-        int auditEnterpriseId = auditMapper.insertAudit(auditEnterpriseInfo);
-        return auditEnterpriseId;
-
-    }*/
 
     @Override
     public List<User> getUser()
     {
-        List<User> user = testMapper.getUser();
-        return user;
+        return testMapper.getUser();
     }
 
     @Override
@@ -58,10 +50,7 @@ public class TestServiceImpl implements TestService
     {
 
 
-
-        User user = testMapper.selectUserByName(name);
-
-        return user;
+        return testMapper.selectUserByName(name);
     }
 
     @Override
