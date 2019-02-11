@@ -13,36 +13,53 @@
 # 模块描述
 
 spring +springmvc +jersey +mybatis
+
 #############################
 
 jersey:
 http://localhost:8080/history-archive/serv/path/hello
+
 #############################
 
 springmvc
 http://localhost:8080/history-archive/serv/mvc/hello
+
 #############################
 
 http://localhost:8080/history-archive/index
 
 http://localhost:8080/history-archive/serv/mvc/getUserInfo?name=ds
+
 http://localhost:8080/history-archive/serv/mvc/deleteUserInfo?name=AAAA
 
 
 #############################
 config 公共的资源配置中心
+
 包括 mybaits 数据库连接 等配置
+
 #############################
 
 exception  公共的异常配置中心
+
 #############################
 
 app 后端配置中心
-controller 控制中心
+
+controller 控制中心   要求命名：*Controller
+
 model  模型  pv 视图
-service 服务中心 impl  实现中心
-mapper  mybatis 配置类  dal.mapper.page 分页mybatis 配置类
+
+service 服务中心 
+
+impl  实现中心    要求命名  *ServiceImpl    显现类必须继承service
+
+mapper  mybatis 配置类  
+
+mapper.page 分页mybatis 配置类
+
 resources.mapper  mybatis xml配置中心
+
 #############################
 
 
