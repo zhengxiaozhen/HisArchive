@@ -16,17 +16,17 @@ spring +springmvc +jersey +mybatis
 #############################
 
 jersey:
-http://localhost:8080/history-archive/api/path/hello
+http://localhost:8080/history-archive/serv/path/hello
 #############################
 
 springmvc
-http://localhost:8080/history-archive/api/mvc/hello
+http://localhost:8080/history-archive/serv/mvc/hello
 #############################
 
 http://localhost:8080/history-archive/index
 
-http://localhost:8080/history-archive/api/mvc/getUserInfo?name=ds
-http://localhost:8080/history-archive/api/mvc/deleteUserInfo?name=AAAA
+http://localhost:8080/history-archive/serv/mvc/getUserInfo?name=ds
+http://localhost:8080/history-archive/serv/mvc/deleteUserInfo?name=AAAA
 
 
 #############################
@@ -38,10 +38,10 @@ exception  公共的异常配置中心
 #############################
 
 app 后端配置中心
-api.controller 控制中心
-api.model  模型  pv 视图
-api.service 服务中心 impl  实现中心
-dal.mapper  mybatis 配置类  dal.mapper.page 分页mybatis 配置类
+controller 控制中心
+model  模型  pv 视图
+service 服务中心 impl  实现中心
+mapper  mybatis 配置类  dal.mapper.page 分页mybatis 配置类
 resources.mapper  mybatis xml配置中心
 #############################
 

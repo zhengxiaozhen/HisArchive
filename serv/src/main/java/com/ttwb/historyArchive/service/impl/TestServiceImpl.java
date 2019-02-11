@@ -1,11 +1,11 @@
-package com.ttwb.historyArchive.api.service.impl;
+package com.ttwb.historyArchive.service.impl;
 
 
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
-import com.ttwb.historyArchive.api.model.User;
-import com.ttwb.historyArchive.api.service.TestService;
-import com.ttwb.historyArchive.dal.mapper.TestMapper;
+import com.ttwb.historyArchive.model.User;
+import com.ttwb.historyArchive.service.TestService;
+import com.ttwb.historyArchive.mapper.TestMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.TransactionStatus;
 import org.springframework.transaction.support.TransactionCallback;

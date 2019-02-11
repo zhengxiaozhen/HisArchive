@@ -1,7 +1,7 @@
-package com.ttwb.historyArchive.api.service;
+package com.ttwb.historyArchive.service;
 
 
-import com.ttwb.historyArchive.api.model.User;
+import com.ttwb.historyArchive.model.User;
 
 import java.util.List;
 

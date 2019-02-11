@@ -36,7 +36,7 @@
 
     <!--mapper扫描根据类名配置-->
     <bean id="mapperScannerConfigurer" class="org.mybatis.spring.mapper.MapperScannerConfigurer">
-        <property name="basePackage" value="com.ttwb.historyArchive.dal.mapper"/>
+        <property name="basePackage" value="com.ttwb.historyArchive.mapper"/>
         <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"/>
         <property name="nameGenerator" ref="fullBeanNameGenerator"/>
     </bean>
