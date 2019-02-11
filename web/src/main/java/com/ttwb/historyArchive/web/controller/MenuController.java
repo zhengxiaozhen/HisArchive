@@ -19,7 +19,7 @@ public class MenuController {
 
 
    //index返回用户信息
-    @RequestMapping("/index.html")
+    @RequestMapping("/index")
     public ModelAndView showIndex() {
         ModelAndView mav = new ModelAndView("login");
         return mav;
@@ -31,7 +31,7 @@ public class MenuController {
      * 菜单主界面
      * @return
      */
-    @RequestMapping("/login.html")
+    @RequestMapping("/login")
     public ModelAndView main(HttpServletRequest request) {
         ModelAndView mav = new ModelAndView("login");
         return mav;

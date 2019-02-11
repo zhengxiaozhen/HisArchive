@@ -58,7 +58,7 @@
    	   </div>
    </div>
    <div class="foot">
-   		<div class="footBox">广西省级居住证制证系统（自助）     技术支持：福建天创信息科技有限公司</div>
+   		<div class="footBox">历史档案     技术支持：TTWB.COM</div>
    </div>
 <script type="text/javascript" src="../js/jquery-1.11.2.min.js"></script>
 <script type="text/javascript" src="../js/verify.js" ></script>
@@ -83,7 +83,7 @@
 		});
 		code('#checkCode');
 		
-		get_pki_rand();
+		//get_pki_rand();
 	});
 	// 验证码
    function code(id){
