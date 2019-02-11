@@ -1,6 +1,14 @@
 # HisArchive
 历史档案扫描业务
 
+# 需要
+1. 开发工具： idea
+2. maven 3.9
+3. jdk 8
+4. tomcat 8.5
+5. 数据库 oracle
+6. 架构 layui+ajax+json+spring+springmvc+jersey+mybatis
+
 # 模块描述
 
 spring +springmvc +jersey +mybatis
