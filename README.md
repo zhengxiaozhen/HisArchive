@@ -7,7 +7,7 @@
 3. jdk 8
 4. tomcat 8.5
 5. 数据库 oracle
-6. 架构 layui+ajax+json+spring+springmvc+jersey+mybatis
+6. 架构 jsp+layui+ajax+json+spring+springmvc+jersey+mybatis
 7. github
 
 # 模块描述
