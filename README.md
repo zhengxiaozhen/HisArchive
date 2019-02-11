@@ -10,6 +10,10 @@
 6. 架构 jsp+layui+ajax+json+spring+springmvc+jersey+mybatis
 7. github
 
+#tomcat
+      <Context docBase="D:\Tomcat\apache-tomcat-8.5.20.1\webapps\history-archive" path="/"  ></Context>
+
+
 # 模块描述
 
 spring +springmvc +jersey +mybatis
