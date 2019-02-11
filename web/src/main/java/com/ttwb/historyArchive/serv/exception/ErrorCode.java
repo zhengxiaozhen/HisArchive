@@ -1,4 +1,4 @@
-package com.ttwb.historyArchive.exception;
+package com.ttwb.historyArchive.serv.exception;
 
 /**
  * Created by user on 2017/1/17.

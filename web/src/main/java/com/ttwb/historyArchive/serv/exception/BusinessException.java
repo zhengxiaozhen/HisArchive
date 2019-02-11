@@ -1,4 +1,4 @@
-package com.ttwb.historyArchive.exception;
+package com.ttwb.historyArchive.serv.exception;
 
 
 /**

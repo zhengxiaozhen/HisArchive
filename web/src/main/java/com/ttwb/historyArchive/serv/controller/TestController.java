@@ -1,7 +1,7 @@
-package com.ttwb.historyArchive.controller;
+package com.ttwb.historyArchive.serv.controller;
 
-import com.ttwb.historyArchive.model.User;
-import com.ttwb.historyArchive.service.TestService;
+import com.ttwb.historyArchive.serv.model.User;
+import com.ttwb.historyArchive.serv.service.TestService;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;

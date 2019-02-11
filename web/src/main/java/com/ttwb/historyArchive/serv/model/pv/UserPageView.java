@@ -1,6 +1,7 @@
-package com.ttwb.historyArchive.model.pv;
+package com.ttwb.historyArchive.serv.model.pv;
 
-import com.ttwb.historyArchive.model.User;
+
+import com.ttwb.historyArchive.serv.model.User;
 
 import java.io.Serializable;
 

@@ -1,4 +1,4 @@
-package com.ttwb.historyArchive.model;
+package com.ttwb.historyArchive.serv.model;
 
 /**
  * @Classname User

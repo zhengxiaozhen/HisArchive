@@ -8,13 +8,13 @@
        http://www.springframework.org/schema/context/spring-context.xsd">
 
     <!-- bean注入 通过正则表达式regex匹配所有bean-->
-    <context:component-scan base-package="com.ttwb.historyArchive.service.impl"
-                            name-generator="com.ttwb.historyArchive.config.FullBeanNameGenerator">
+    <context:component-scan base-package="com.ttwb.historyArchive.serv.service.impl"
+                            name-generator="com.ttwb.historyArchive.serv.config.FullBeanNameGenerator">
         <context:include-filter type="regex" expression=".*ServiceImpl"/>
     </context:component-scan>
 
     <!-- bean注入 通过正则表达式regex匹配所有bean-->
-    <context:component-scan base-package="com.ttwb.historyArchive.controller">
+    <context:component-scan base-package="com.ttwb.historyArchive.serv.controller">
         <context:include-filter type="regex" expression=".*Controller"/>
     </context:component-scan>
 

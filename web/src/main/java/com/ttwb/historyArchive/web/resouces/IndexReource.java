@@ -1,9 +1,9 @@
-package com.ttwb.historyArchive.web.rest.resouces;
+package com.ttwb.historyArchive.web.resouces;
 
 import com.alibaba.fastjson.JSON;
-import com.ttwb.historyArchive.controller.TestController;
-import com.ttwb.historyArchive.model.User;
-import com.ttwb.historyArchive.service.TestService;
+import com.ttwb.historyArchive.serv.controller.TestController;
+import com.ttwb.historyArchive.serv.model.User;
+import com.ttwb.historyArchive.serv.service.TestService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 

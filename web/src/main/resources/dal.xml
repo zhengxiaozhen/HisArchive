@@ -7,6 +7,10 @@
     <!--**********************************************************-->
     <!--***********数据分析数据源配置*******************************-->
     <!--**********************************************************-->
+    <!-- 开启扫描注解 -->
+<!--
+    <context:component-scan base-package="com.ttwb.historyArchive.serv.mapper"></context:component-scan>
+-->
 
     <!--  TransactionManager定义  事务配置  jdbc事务模板 -->
     <bean id="txManager"
@@ -32,11 +36,11 @@
         </property>
     </bean>
     <!--全称对应-->
-    <bean id="fullBeanNameGenerator" class="com.ttwb.historyArchive.config.FullBeanNameGenerator"/>
+    <bean id="fullBeanNameGenerator" class="com.ttwb.historyArchive.serv.config.FullBeanNameGenerator"/>
 
-    <!--mapper扫描根据类名配置-->
+    <!--mapper扫描根据类名配置 mapper自动注入-->
     <bean id="mapperScannerConfigurer" class="org.mybatis.spring.mapper.MapperScannerConfigurer">
-        <property name="basePackage" value="com.ttwb.historyArchive.mapper"/>
+        <property name="basePackage" value="com.ttwb.historyArchive.serv.mapper"/>
         <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"/>
         <property name="nameGenerator" ref="fullBeanNameGenerator"/>
     </bean>
