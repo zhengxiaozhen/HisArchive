@@ -1,0 +1,139 @@
+@charset "utf-8";
+/* CSS Document */
+*{
+	margin:0;
+	padding:0;
+	text-decoration:none;
+	list-style:none;
+	font-family:"微软雅黑";
+	}
+.kongjian_tan{
+	clear:both;float:left;text-align:left;width:372px;
+	}
+.bitle_01{
+	color:#cbcbcb;
+	font-size:12px;
+	line-height:20px;
+	}
+.bitle_icon{
+	background:url(../images/colse_icon_245.png) no-repeat 2px center;
+	width:18px;
+	height:18px;
+	display:inline-block;
+	cursor:pointer;
+	float:right;
+	}
+.bitle_icon:hover{
+	background:url(../images/colse_icon_245.png) no-repeat -16px center ;
+	background-color:#f57272;
+	}
+.lititle{
+	float:left;
+	color:#5b8fc8;
+	font-size:12px;
+	cursor:pointer;
+	line-height:22px;
+	padding-left:6px;
+	padding-right:6px;
+	}
+.lititle:hover{
+	background-color:#BBE9FF;
+	}
+.title_select{
+	background-color:#85b4ea;
+	color:white;
+	}
+.trksd_03{
+	text-align:left;
+	padding-right:6px;
+	white-space:nowrap;
+	}
+.numg_01{
+	padding-left:4px;
+	
+	display:inline-block;
+	padding-right:2px;
+	}
+.numg_02{
+	/*display:inline-block;*/
+	padding-right:10px;
+	padding-left:10px;
+	}
+.tr_poi{cursor:pointer;color:#666;}
+.tr_poi:hover{background-color:#0CF;}
+.gjjksdk{
+	cursor:pointer;
+	margin-top:4px;
+	color:#999999;font-size:12px;
+	line-height:22px;
+	}
+
+.gjjksdk li:hover{
+	background-color:#f1f5f9;
+	color:#508fd5;
+	}
+/*分页*/
+.fenye_div{
+	border-top:1px dashed #D7D7D7;
+	width:200px;
+	margin:0 auto;
+}
+.fenye_ul{
+	overflow:hidden;
+	margin-top:4px;
+	margin-bottom:3px;
+	padding-top:4px;
+	margin-left:60px;
+	}
+.fenye_01{
+	background:url(../images/first_icon.png) no-repeat left center;
+	width:10px;
+	height:10px;
+	float:left;
+	cursor:pointer;
+	margin-left:8px;
+	title:"zuiho"
+	}
+.fenye_01:hover{
+	background:url(../images/first_icon.png) no-repeat -14px center;
+	}
+.fenye_02{
+	background:url(../images/left_next.png) no-repeat left center;
+	width:10px;
+	height:10px;
+	float:left;
+	cursor:pointer;
+	margin-left:8px;
+	}
+.fenye_02:hover{
+	background:url(../images/left_next.png) no-repeat -14px center;
+	}
+.fenye_03{
+	background:url(../images/right_next.png) no-repeat right center;
+	width:10px;
+	height:10px;
+	float:left;
+	cursor:pointer;
+	margin-left:8px;
+	}
+.fenye_03:hover{
+	background:url(../images/right_next.png) no-repeat left center;
+	}
+.fenye_04{
+	background:url(../images/end_icon.png) no-repeat -15px center;
+	width:10px;
+	height:10px;
+	float:left;
+	cursor:pointer;
+	margin-left:8px;
+	}
+.fenye_04:hover{
+	background:url(../images/end_icon.png) no-repeat left center;
+	}
+.fenye_05{
+	float:left;
+	font-size:12px;
+	margin-left:6px;
+	margin-top:-2px;
+	color:#333;
+	}

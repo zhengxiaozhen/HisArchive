@@ -12,8 +12,7 @@
    <!-- 注解扫描包 -->
    <context:component-scan base-package="com.ttwb" />
    <!--静态资源处理-->
-   <!--
-   <mvc:default-servlet-handler />-->
+   <mvc:default-servlet-handler />
    <!--开启注解-->
    <mvc:annotation-driven  />
 

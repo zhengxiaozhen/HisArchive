@@ -7,6 +7,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.servlet.http.HttpServletRequest;
+
 /**
  * Created by user on 2016/8/12.
  */
@@ -17,19 +19,23 @@ public class MenuController {
 
 
    //index返回用户信息
-    @RequestMapping("/index")
+    @RequestMapping("/index.html")
     public ModelAndView showIndex() {
-        ModelAndView mav = new ModelAndView("main");
+        ModelAndView mav = new ModelAndView("login");
         return mav;
     }
 
 
 
     /**
-     * 菜单主界面 moduleId 子系统Id resourceId 一级菜单Id
+     * 菜单主界面
      * @return
      */
-
+    @RequestMapping("/login.html")
+    public ModelAndView main(HttpServletRequest request) {
+        ModelAndView mav = new ModelAndView("login");
+        return mav;
+    }
 
     @RequestMapping("/error403")
     public ModelAndView error403() {
