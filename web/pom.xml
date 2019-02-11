@@ -12,7 +12,7 @@
     <artifactId>web</artifactId>
     <packaging>war</packaging>
 
-    <name>HisArchive-web Maven Webapp</name>
+    <name>HisArchive-web Maven Web</name>
     <!-- FIXME change it to the project's website -->
     <url>http://www.example.com</url>
 
@@ -21,11 +21,7 @@
         <!-- config -->
         <dependency>
             <groupId>com.ttwb.historyArchive</groupId>
-            <artifactId>config</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>com.ttwb.historyArchive</groupId>
-            <artifactId>app</artifactId>
+            <artifactId>serv</artifactId>
         </dependency>
 
         <dependency>
@@ -37,11 +33,6 @@
 
 
         <!--日志审计相关-->
-        <dependency>
-            <groupId>com.sharp.dtunify</groupId>
-            <artifactId>dt-model</artifactId>
-            <version>1.0-SNAPSHOT</version>
-        </dependency>
         <dependency>
             <groupId>com.alibaba</groupId>
             <artifactId>fastjson</artifactId>
@@ -60,26 +51,7 @@
         <!---->
 
         <!-- 第三方库 -->
-        <!--<dependency>
-            <groupId>org.glassfish.jersey.media</groupId>
-            <artifactId>jersey-media-multipart</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.glassfish.jersey.core</groupId>
-            <artifactId>jersey-client</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.glassfish.jersey.core</groupId>
-            <artifactId>jersey-server</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.glassfish.jersey.ext</groupId>
-            <artifactId>jersey-spring3</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.glassfish.jersey.media</groupId>
-            <artifactId>jersey-media-json-jackson</artifactId>
-        </dependency>-->
+
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-beans</artifactId>
@@ -146,7 +118,7 @@
             </exclusions>
         </dependency>
 
-        <dependency>
+        <!--<dependency>
             <groupId>nz.net.ultraq.thymeleaf</groupId>
             <artifactId>thymeleaf-layout-dialect</artifactId>
         </dependency>
@@ -185,7 +157,7 @@
         <dependency>
             <groupId>com.github.theborakompanioni</groupId>
             <artifactId>thymeleaf-extras-shiro</artifactId>
-        </dependency>
+        </dependency>-->
 
         <dependency>
             <groupId>javax.servlet</groupId>
@@ -198,7 +170,7 @@
             <artifactId>commons-codec</artifactId>
         </dependency>
 
-        <dependency>
+        <!--<dependency>
             <groupId>com.octo.captcha</groupId>
             <artifactId>jcaptcha-all</artifactId>
             <exclusions>
@@ -215,7 +187,7 @@
                     <groupId>org.springframework</groupId>
                 </exclusion>
             </exclusions>
-        </dependency>
+        </dependency>-->
 
         <!--swagger-jersey begin-->
         <!-- Jersey  -->
@@ -228,14 +200,12 @@
         <dependency>
             <groupId>com.sun.jersey</groupId>
             <artifactId>jersey-server</artifactId>
-            <version>1.8</version>
         </dependency>
 
         <!-- Jersey + Spring -->
         <dependency>
             <groupId>com.sun.jersey.contribs</groupId>
             <artifactId>jersey-spring</artifactId>
-            <version>1.8</version>
             <exclusions>
                 <exclusion>
                     <groupId>org.springframework</groupId>
@@ -288,24 +258,22 @@
             </exclusions>
         </dependency>-->
         <!--swagger-jersey end-->
-        <dependency>
+        <!--<dependency>
             <groupId>org.apache.shiro</groupId>
             <artifactId>shiro-core</artifactId>
-        </dependency>
-        <dependency>
+        </dependency>-->
+        <!--<dependency>
             <groupId>javax.servlet.jsp</groupId>
             <artifactId>jsp-api</artifactId>
             <version>2.1</version>
-        </dependency>
+        </dependency>-->
         <dependency>
             <groupId>javax.servlet</groupId>
             <artifactId>jstl</artifactId>
-            <version>1.2</version>
         </dependency>
         <dependency>
             <groupId>javax.servlet</groupId>
             <artifactId>servlet-api</artifactId>
-            <version>2.3</version>
         </dependency>
         <!-- Test dependencies - scope set appropriately already in the parent pom-->
         <!--<dependency>
@@ -329,8 +297,14 @@
         <dependency>
             <groupId>taglibs</groupId>
             <artifactId>standard</artifactId>
-            <version>1.1.2</version>
         </dependency>
+
+        <dependency>
+            <groupId>com.github.pagehelper</groupId>
+            <artifactId>pagehelper</artifactId>
+            <version>${pagehelper.mybatis.plugin.version}</version>
+        </dependency>
+
     </dependencies>
 
     <build>

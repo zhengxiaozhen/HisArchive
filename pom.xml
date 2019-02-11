@@ -8,10 +8,8 @@
     <packaging>pom</packaging>
     <version>1.0.0-SNAPSHOT</version>
     <modules>
-        <module>config</module>
-        <module>exception</module>
         <module>web</module>
-        <module>app</module>
+        <module>serv</module>
     </modules>
 
     <properties>
@@ -98,13 +96,17 @@
         <resources>
             <resource>
                 <directory>src/main/resources</directory>
+                <!--数据库信息不打包-->
+                <!--<excludes>
+                    <exclude>conf.properties</exclude>
+                </excludes>-->
             </resource>
-            <resource>
+            <!--<resource>
                 <directory>src/main/conf/${profiles.active}</directory>
                 <excludes>
                     <exclude>conf.properties</exclude>
                 </excludes>
-            </resource>
+            </resource>-->
         </resources>
         <plugins>
             <plugin>
@@ -127,6 +129,7 @@
             <properties>
                 <profiles.active>dev</profiles.active>
             </properties>
+            <!-- 设置默认激活这个配置 -->
             <activation>
                 <activeByDefault>true</activeByDefault>
             </activation>
@@ -143,19 +146,6 @@
     <dependencyManagement>
         <dependencies>
             <!-- ===============项目模块=============-->
-            <!-- exception -->
-            <dependency>
-                <groupId>com.ttwb.historyArchive</groupId>
-                <artifactId>exception</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-
-            <!-- config -->
-            <dependency>
-                <groupId>com.ttwb.historyArchive</groupId>
-                <artifactId>config</artifactId>
-                <version>${project.version}</version>
-            </dependency>
 
             <dependency>
                 <groupId>com.ttwb.historyArchive</groupId>
@@ -164,45 +154,12 @@
             </dependency>
             <dependency>
                 <groupId>com.ttwb.historyArchive</groupId>
-                <artifactId>app</artifactId>
+                <artifactId>serv</artifactId>
                 <version>${project.version}</version>
             </dependency>
 
             <!-- ===================jersey各类jar包=================-->
-            <!-- Jersey  -->
-            <!--<dependency>
-                <groupId>com.sun.jersey</groupId>
-                <artifactId>jersey-server</artifactId>
-                <version>1.8</version>
-            </dependency>
-            &lt;!&ndash; Jersey + Spring &ndash;&gt;
-            <dependency>
-                <groupId>com.sun.jersey.contribs</groupId>
-                <artifactId>jersey-spring</artifactId>
-                <version>1.8</version>
-                <exclusions>
-                    <exclusion>
-                        <groupId>org.springframework</groupId>
-                        <artifactId>spring</artifactId>
-                    </exclusion>
-                    <exclusion>
-                        <groupId>org.springframework</groupId>
-                        <artifactId>spring-core</artifactId>
-                    </exclusion>
-                    <exclusion>
-                        <groupId>org.springframework</groupId>
-                        <artifactId>spring-web</artifactId>
-                    </exclusion>
-                    <exclusion>
-                        <groupId>org.springframework</groupId>
-                        <artifactId>spring-beans</artifactId>
-                    </exclusion>
-                    <exclusion>
-                        <groupId>org.springframework</groupId>
-                        <artifactId>spring-context</artifactId>
-                    </exclusion>
-                </exclusions>
-            </dependency>-->
+
             <dependency>
                 <groupId>org.glassfish.jersey.containers</groupId>
                 <artifactId>jersey-container-servlet</artifactId>
@@ -240,7 +197,7 @@
             </dependency>
 
             <!-- ==================shiro================-->
-            <dependency>
+            <!--<dependency>
                 <groupId>org.apache.shiro</groupId>
                 <artifactId>shiro-core</artifactId>
                 <version>${shiro.version}</version>
@@ -256,7 +213,7 @@
                 <groupId>org.apache.shiro</groupId>
                 <artifactId>shiro-spring</artifactId>
                 <version>${shiro.version}</version>
-            </dependency>
+            </dependency>-->
 
             <!-- ==================jackson各类jar包================-->
             <dependency>
@@ -363,7 +320,7 @@
             </dependency>
 
             <!-- velocity 模板引擎 -->
-            <dependency>
+            <!--<dependency>
                 <groupId>org.apache.velocity</groupId>
                 <artifactId>velocity</artifactId>
                 <version>${velocity.version}</version>
@@ -374,10 +331,10 @@
                 <artifactId>velocity-tools</artifactId>
                 <version>${velocity.tools.version}</version>
             </dependency>
-
+-->
             <!-- thymeleaf 模板引擎 -->
             <!-- https://mvnrepository.com/artifact/org.thymeleaf/thymeleaf -->
-            <dependency>
+            <!--<dependency>
                 <groupId>org.thymeleaf</groupId>
                 <artifactId>thymeleaf</artifactId>
                 <version>${thymeleaf.version}</version>
@@ -395,12 +352,11 @@
                 <version>${thymeleaf.layout.dialect}</version>
             </dependency>
 
-            <!-- https://mvnrepository.com/artifact/com.github.theborakompanioni/thymeleaf-extras-shiro -->
             <dependency>
                 <groupId>com.github.theborakompanioni</groupId>
                 <artifactId>thymeleaf-extras-shiro</artifactId>
                 <version>${thymeleaf.shiro.version}</version>
-            </dependency>
+            </dependency>-->
 
             <!-- ================junit jar包=============== -->
             <dependency>
@@ -454,7 +410,7 @@
             </dependency>
 
             <!-- ========== 短信/邮件类 jar包 =============== -->
-            <dependency>
+            <!--<dependency>
                 <groupId>javax.mail</groupId>
                 <artifactId>mail</artifactId>
                 <version>${java.mail.version}</version>
@@ -463,13 +419,13 @@
                 <groupId>com.twilio.sdk</groupId>
                 <artifactId>twilio-java-sdk</artifactId>
                 <version>${twilio.version}</version>
-            </dependency>
+            </dependency>-->
             <!-- ========== quartz 任务调度 jar包 =============== -->
-            <dependency>
+            <!--<dependency>
                 <groupId>org.quartz-scheduler</groupId>
                 <artifactId>quartz</artifactId>
                 <version>${quartz.version}</version>
-            </dependency>
+            </dependency>-->
 
             <!-- ========== 工具类 =============== -->
             <dependency>
@@ -575,6 +531,60 @@
                 <version>2.2.4</version>
             </dependency>
 
+            <dependency>
+                <groupId>javax.servlet</groupId>
+                <artifactId>jstl</artifactId>
+                <version>1.2</version>
+            </dependency>
+
+            <dependency>
+                <groupId>javax.servlet</groupId>
+                <artifactId>servlet-api</artifactId>
+                <version>2.3</version>
+            </dependency>
+
+            <dependency>
+                <groupId>taglibs</groupId>
+                <artifactId>standard</artifactId>
+                <version>1.1.2</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.sun.jersey</groupId>
+                <artifactId>jersey-server</artifactId>
+                <version>1.8</version>
+            </dependency>
+
+
+            <!--===============-->
+            <!--Jersey + Spring -->
+            <dependency>
+                <groupId>com.sun.jersey.contribs</groupId>
+                <artifactId>jersey-spring</artifactId>
+                <version>1.8</version>
+                <exclusions>
+                    <exclusion>
+                        <groupId>org.springframework</groupId>
+                        <artifactId>spring</artifactId>
+                    </exclusion>
+                    <exclusion>
+                        <groupId>org.springframework</groupId>
+                        <artifactId>spring-core</artifactId>
+                    </exclusion>
+                    <exclusion>
+                        <groupId>org.springframework</groupId>
+                        <artifactId>spring-web</artifactId>
+                    </exclusion>
+                    <exclusion>
+                        <groupId>org.springframework</groupId>
+                        <artifactId>spring-beans</artifactId>
+                    </exclusion>
+                    <exclusion>
+                        <groupId>org.springframework</groupId>
+                        <artifactId>spring-context</artifactId>
+                    </exclusion>
+                </exclusions>
+            </dependency>
         </dependencies>
     </dependencyManagement>
 </project>
