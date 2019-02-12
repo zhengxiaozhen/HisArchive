@@ -1,16 +1,9 @@
 package com.ttwb.historyArchive.web.resouces;
 
-import com.alibaba.fastjson.JSON;
-import com.ttwb.historyArchive.serv.controller.TestController;
-import com.ttwb.historyArchive.serv.model.User;
-import com.ttwb.historyArchive.serv.service.TestService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
-import javax.ws.rs.*;
+import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
-import javax.ws.rs.core.Response;
-import java.util.List;
 
 
 /**
@@ -21,10 +14,10 @@ import java.util.List;
  */
 @Controller
 @Produces(MediaType.APPLICATION_JSON)
-@Path("/mvc")
+//@Path("/mvc")
 public class IndexReource
 {
-    @Autowired
+    /*@Autowired
     TestController testController;
     @Autowired
     TestService testService;
@@ -40,9 +33,9 @@ public class IndexReource
         for (User user : list)
         {
             System.out.println("name:"+user.getUserName());
-            System.out.println("age:"+user.getAge());
-            name=user.getUserName();
-            age=user.getAge().toString();
+           // System.out.println("age:"+user.getAge());
+           // name=user.getUserName();
+           // age=user.getAge().toString();
         }
         String str = JSON.toJSONString(list);
        return Response.ok(str).build();
@@ -63,7 +56,7 @@ public class IndexReource
     public Response deleteRadioLicense(@QueryParam("name")String name) {
         testService.deleteUserInfo(name);
         return Response.ok().build();
-    }
+    }*/
 
 }
 

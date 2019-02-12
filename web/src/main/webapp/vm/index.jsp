@@ -11,10 +11,10 @@
 	<meta name="apple-mobile-web-app-capable" content="yes">
 	<meta name="format-detection" content="telephone=no">
 	<%@include file="/vm/resource.jsp" %>
-	<link rel="stylesheet" href="css/global.css" media="all">
-	<link rel="stylesheet" href="js/plugins/font-awesome-4.7.0/css/font-awesome.min.css">
-	<script src="js/public/html5shiv.min.js"></script>
-	<script src="js/index.js"></script>
+	<link rel="stylesheet" href="../css/global.css" media="all">
+	<link rel="stylesheet" href="../js/plugins/font-awesome-4.7.0/css/font-awesome.min.css">
+	<script src="../js/public/html5shiv.min.js"></script>
+	<script src="../js/index.js"></script>
 	<style>
 		.clearfix:after {
 			content: "\200B";
@@ -61,7 +61,7 @@
 			top: 40px !important;
 		}
 		.logo-img {
-			background: url(images/background-image.jpg) no-repeat;
+			background: url(../images/background-image.jpg) no-repeat;
 		}
 		.layui-nav-item {
 			float: left;
@@ -74,7 +74,7 @@
 <body>
 	<div class="layui-layout layui-layout-admin" style="border-bottom: solid 5px #1aa094;">
   <div style="width:100%;height:90px;" class="logo-img">
-			<img src="images/logo.png" style="margin:20px 0 0 20px" />
+			<img src="../images/logo.png" style="margin:20px 0 0 20px" />
 		</div>
 		<div class="layui-header header header-demo">
 	  		<div class="admin-login-box">

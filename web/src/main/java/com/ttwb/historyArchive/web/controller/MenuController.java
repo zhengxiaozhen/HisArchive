@@ -18,17 +18,17 @@ public class MenuController {
     private final Logger logger = LoggerFactory.getLogger(getClass());
 
 
-   //index返回用户信息
+   //index主菜单界面
     @RequestMapping("/index")
     public ModelAndView showIndex() {
-        ModelAndView mav = new ModelAndView("login");
+        ModelAndView mav = new ModelAndView("index");
         return mav;
     }
 
 
 
     /**
-     * 菜单主界面
+     * 返回登陆界面
      * @return
      */
     @RequestMapping("/login")

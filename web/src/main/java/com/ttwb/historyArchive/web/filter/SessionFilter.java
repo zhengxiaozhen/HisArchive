@@ -49,7 +49,7 @@ public class SessionFilter extends OncePerRequestFilter {
         if (doFilter) {
             // 执行过滤
             // 从session中获取登录者实体
-            Object obj = request.getSession().getAttribute("username");
+            Object obj = request.getSession().getAttribute("userName");
             if (null == obj) {
                 boolean isAjaxRequest = isAjaxRequest(request);
                 if (isAjaxRequest) {

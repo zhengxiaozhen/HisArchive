@@ -15,3 +15,4 @@
 <script type="text/javascript" src="../js/public/messages_zh.js" charset="UTF-8"></script>
 <script type="text/javascript" src="../js/extend/baseExtend.js"></script>
 <script type="text/javascript" src="../js/plugins/date/My97DatePicker/WdatePicker.js"></script>
+<script type="text/javascript" src="../js/service/httpService.js"></script>

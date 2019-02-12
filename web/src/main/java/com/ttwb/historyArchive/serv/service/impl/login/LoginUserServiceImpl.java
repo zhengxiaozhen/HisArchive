@@ -1,35 +1,28 @@
-package com.ttwb.historyArchive.serv.service.impl;
+package com.ttwb.historyArchive.serv.service.impl.login;
 
 
-import com.github.pagehelper.PageHelper;
-import com.github.pagehelper.PageInfo;
-import com.ttwb.historyArchive.serv.mapper.TestMapper;
+import com.ttwb.historyArchive.serv.mapper.LoginUserMapper;
 import com.ttwb.historyArchive.serv.model.User;
-import com.ttwb.historyArchive.serv.service.TestService;
+import com.ttwb.historyArchive.serv.service.login.LoginUserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.transaction.TransactionStatus;
-import org.springframework.transaction.support.TransactionCallback;
 import org.springframework.transaction.support.TransactionTemplate;
-import org.springframework.util.StringUtils;
-
-import java.util.List;
 
 /**
  * Created by user on 2017/1/21.
  */
 //@Service   bean.xml配置通用的bean实例化
-public class TestServiceImpl implements TestService
+public class LoginUserServiceImpl implements LoginUserService
 {
 
 
     @Autowired
-    private TestMapper testMapper;
+    private LoginUserMapper loginUserMapper;
     @Autowired
     private TransactionTemplate transactionTemplate;
 
 
 
-    @Override
+   /* @Override
     public List<User> getUser()
     {
         return testMapper.getUser();
@@ -43,16 +36,16 @@ public class TestServiceImpl implements TestService
         return new PageInfo<>(list);
     }
 
-
+*/
     @Override
-    public User getUserInfo(String name)
+    public User getUserInfo(String userName,String password)
     {
 
 
-        return testMapper.selectUserByName(name);
+        return loginUserMapper.selectUserByName(userName,password);
     }
 
-    @Override
+   /* @Override
     public void deleteUserInfo(String name)
     {
         if (StringUtils.isEmpty(name))
@@ -71,5 +64,5 @@ public class TestServiceImpl implements TestService
             }
         });
 
-    }
+    }*/
 }

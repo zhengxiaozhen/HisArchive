@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ttwb.historyArchive.serv.mapper.LoginUserMapper">
+    <resultMap id="BaseResultMap" type="com.ttwb.historyArchive.serv.model.pv.UserPageView">
+    </resultMap>
+   <!-- <delete id="deleteByName" parameterType="string">
+    delete from TEST_USER
+    where "USER_NAME" = #{name,jdbcType=NVARCHAR}
+    </delete>
+
+    <select id="getUser" resultMap="BaseResultMap">
+        SELECT 'aa' userName ,'12' age
+        FROM dual
+        WHERE 1=1
+    </select>
+
+
+    <select id="selectUserList" resultMap="BaseResultMap">
+        SELECT USER_NAME userName,Age age
+        FROM TEST_USER
+        WHERE 1=1
+
+        <if test="age != null">
+            <![CDATA[
+                    AND age > #{age}
+                ]]>
+        </if>
+        order by age desc
+
+
+    </select>-->
+    <select id="selectUserByName" resultType="com.ttwb.historyArchive.serv.model.pv.UserPageView">
+        select USERID userId,USERNAME userName,PASSWORD password,NPOLICE_ID npoliceId,zxbz zxbz
+         from TT_BASE.T_USER
+        WHERE 1=1
+        <if test="userName != null">
+            and USERNAME=#{userName}
+        </if>
+        <if test="password != null">
+            and PASSWORD=#{password}
+        </if>
+        <![CDATA[
+        and rownum<2
+          ]]>
+    </select>
+
+</mapper>

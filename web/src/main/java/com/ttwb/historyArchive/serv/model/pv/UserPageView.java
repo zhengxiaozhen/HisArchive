@@ -16,4 +16,7 @@ public class UserPageView extends User implements Serializable
 
 
     private static final long serialVersionUID = -4740773716681739861L;
+
+
+
 }
