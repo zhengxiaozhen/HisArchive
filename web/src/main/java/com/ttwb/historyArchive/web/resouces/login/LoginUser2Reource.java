@@ -2,7 +2,7 @@ package com.ttwb.historyArchive.web.resouces.login;
 
 import com.ttwb.historyArchive.serv.model.User;
 import com.ttwb.historyArchive.serv.model.pv.UserPageView;
-import com.ttwb.historyArchive.serv.service.login.LoginUserService;
+import com.ttwb.historyArchive.serv.service.LoginUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -25,49 +25,88 @@ import javax.ws.rs.core.MediaType;
 @Component
 @Produces(MediaType.APPLICATION_JSON)
 @RequestMapping("/login")
-public  class LoginUser2Reource
+public class LoginUser2Reource
 {
 
     @Autowired
     LoginUserService userService;
 
     /**
-     *
      * @param request
      * @param userPageView
-     * @return
-     * 用户登录资源请求   保存session   /login/user
+     * @return 用户登录资源请求   保存session   /login/user
      */
     @POST
     @RequestMapping("/user")
     @ResponseBody
-    public Object getStudent(HttpServletRequest request ,@RequestBody UserPageView userPageView )
+    public Object getStudent(HttpServletRequest request, @RequestBody UserPageView userPageView)
     {
-        //System.out.println("Path调用到视图");
-        /*UserPageView userPageView=new UserPageView();
-        userPageView.setUserName("admin");
-        userPageView.setPassword("admin");*/
-
-        HttpSession session=   request.getSession(true);
-        User user=userService.getUserInfo(userPageView.getUserName(),userPageView.getPassword());
-        String userF="{}";
 
 
+        HttpSession session = request.getSession(true);
+        String flag = "{}";
 
-        if (user!=null)
+        if (userPageView.getUserName() == null || userPageView.getPassword() == null)
         {
-            session.setAttribute("userName",user.getUserName());
-            session.setAttribute("npoliceId",user.getNpoliceId());
-            session.setAttribute("userId",user.getUserId());
-            userF="{\"data\":\"true\"}";
-        }else {
-            userF="{\"data\":\"账号或密码不正确\"}";
+            flag = "{\"data\":\"账号或密码不为空\"}";
+        } else
+        {
+            User user = userService.getUserInfo(userPageView.getUserName(), userPageView.getPassword());
+
+
+            if (user != null)
+            {
+                session.setAttribute("userName", user.getUserName());
+                session.setAttribute("npoliceId", user.getNpoliceId());
+                session.setAttribute("userId", user.getUserId());
+                flag = "{\"data\":\"true\"}";
+            } else
+            {
+                flag = "{\"data\":\"账号或密码不正确\"}";
+            }
+
         }
 
-        //JSONObject jsonObject= JSON.parseObject(userF);
-        //没有查找到数据返回false
-        //return Response.ok(jsonObject).build();
-        return userF;
+        //测试分页查询
+        // PageInfo<User> page=(PageInfo<User>) userService.getUserPageList(userPageView.getUserName(),0,10);
+
+        //测试新增
+        /*userPageView.setUserName("admintest");
+        userPageView.setPassword("test");
+        userPageView.setNpoliceId("1111");
+        boolean ff=(Boolean) userService.saveUserInfo(userPageView);
+        if (ff)
+        {
+            flag = "{\"data\":\"true\"}";
+        }else {
+            flag = "{\"data\":\"保存异常\"}";
+        }*/
+        //测试更新
+        /*userPageView.setUserName("adminbbbb");
+        userPageView.setPassword("testttt");
+        userPageView.setNpoliceId("1111222");
+        userPageView.setUserId("6");
+        userPageView.setZxbz("1");
+        boolean ff=(Boolean) userService.updateUserInfo(userPageView);
+        if (ff)
+        {
+            flag = "{\"data\":\"true\"}";
+        }else {
+            flag = "{\"data\":\"更新异常\"}";
+        }
+        */
+        //测试删除
+
+        /*userPageView.setUserId("6");
+        boolean ff = (Boolean) userService.deleteUserInfo(userPageView.getUserId());
+        if (ff)
+        {
+            flag = "{\"data\":\"true\"}";
+        } else
+        {
+            flag = "{\"data\":\"更新异常\"}";
+        }*/
+        return flag;
 
     }
 }

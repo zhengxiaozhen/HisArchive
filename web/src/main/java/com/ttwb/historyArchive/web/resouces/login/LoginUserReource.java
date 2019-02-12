@@ -4,7 +4,7 @@ import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.ttwb.historyArchive.serv.model.User;
 import com.ttwb.historyArchive.serv.model.pv.UserPageView;
-import com.ttwb.historyArchive.serv.service.login.LoginUserService;
+import com.ttwb.historyArchive.serv.service.LoginUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 

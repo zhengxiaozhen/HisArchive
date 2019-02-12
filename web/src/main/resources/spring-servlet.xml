@@ -8,64 +8,6 @@
          http://www.springframework.org/schema/context
          http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
 
-    <!--velocity模板引擎相关配置-->
-   <!-- <bean id="velocityConfigurer" class="org.springframework.web.servlet.view.velocity.VelocityConfigurer">
-        <property name="resourceLoaderPath" value="/vmtemplates/"/>
-        <property name="velocityProperties">
-            <props>
-                <prop key="input.encoding">utf-8</prop>
-                <prop key="output.encoding">utf-8</prop>
-            </props>
-        </property>
-    </bean>
-
-    <bean id="velocityLayoutViewResolver" class="org.springframework.web.servlet.view.velocity.VelocityLayoutViewResolver">
-        <property name="suffix" value=".vm"/>
-        <property name="contentType" value="text/html;charset=utf-8"/>
-        <property name="toolboxConfigLocation" value="/WEB-INF/classes/velocitytools.xml" />&lt;!&ndash;toolbox配置文件路径&ndash;&gt;
-        <property name="dateToolAttribute" value="date" />&lt;!&ndash;日期函数名称&ndash;&gt;
-        <property name="numberToolAttribute" value="number" />&lt;!&ndash;数字函数名称&ndash;&gt;
-        <property name="exposeSpringMacroHelpers" value="true" />&lt;!&ndash;是否使用spring对宏定义的支持&ndash;&gt;
-        <property name="exposeRequestAttributes" value="true" />&lt;!&ndash;是否开放request属性&ndash;&gt;
-        <property name="requestContextAttribute" value="request"/>&lt;!&ndash;request属性引用名称&ndash;&gt;
-        <property name="layoutUrl" value="layout/default.vm"/>&lt;!&ndash;指定layout文件&ndash;&gt;
-        <property name="viewClass" value="com.fjrlkj.safety.web.velocity.ext.VelocityToolboxView2"/>
-        <property name="order" value="1"/>
-
-    </bean>
-
-     &lt;!&ndash;thymeleaf模板引擎相关配置&ndash;&gt;
-    <bean id="templateResolver" class="org.thymeleaf.spring3.templateresolver.SpringResourceTemplateResolver">
-        <property name="prefix" value="/templates/"/>
-        <property name="suffix" value=".html"/>
-        <property name="templateMode" value="HTML5"/>
-        <property name="cacheable" value="false" />
-        <property name="characterEncoding" value="UTF-8"/>
-    </bean>
-
-    <bean id="templateEngine" class="org.thymeleaf.spring3.SpringTemplateEngine">
-        <property name="templateResolver" ref="templateResolver"/>
-        <property name="additionalDialects">
-            <set>
-                <bean class="at.pollux.thymeleaf.shiro.dialect.ShiroDialect"/>
-                <bean class="nz.net.ultraq.thymeleaf.LayoutDialect"/>
-            </set>
-        </property>
-    </bean>
-
-    <bean id="thymeleafViewResolver" class="org.thymeleaf.spring3.view.ThymeleafViewResolver">
-        <property name="characterEncoding" value="UTF-8"/>
-        <property name="templateEngine" ref="templateEngine"/>
-        <property name="order" value="2"/>
-    </bean>-->
-    <!-- 注解扫描包 -->
-    <!--<context:component-scan base-package="com.ttwb" />
-
-    <mvc:default-servlet-handler />
-
-    <mvc:annotation-driven  />-->
-
-
 
     <!-- 配置视图解析器
         进行jsp解析，默认使用jstl标签，classpath下得有jstl的包-->
@@ -76,18 +18,6 @@
     <mvc:resources mapping="/js/**" location="/js/" />
     <mvc:resources mapping="/css/**" location="/css/" />
     <mvc:resources mapping="/img/**" location="/img/" />
-
-
-    <!-- spring mvc 视图解析器 -->
-   <!-- <bean id="viewResolver"
-          class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-        <property name="prefix">
-            <value>/vm/</value>
-        </property>
-        <property name="suffix">
-            <value>.jsp</value>
-        </property>
-    </bean>-->
 
     <bean id="contentNegotiationManager"
           class="org.springframework.web.accept.ContentNegotiationManagerFactoryBean">
@@ -115,13 +45,5 @@
     </bean>
 
 
-    <!--<mvc:annotation-driven/>-->
-
-
-    <!--shiro 注解支持-->
-    <!--<aop:config proxy-target-class="true"></aop:config>
-    <bean class="org.apache.shiro.spring.security.interceptor.AuthorizationAttributeSourceAdvisor">
-        <property name="securityManager" ref="securityManager"/>
-    </bean>-->
 
 </beans>

@@ -8,42 +8,17 @@
          http://www.springframework.org/schema/context
          http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
 
-<import resource="classpath*:biz.xml"></import>
-   <!-- 注解扫描包 -->
-   <context:component-scan base-package="com.ttwb" />
-   <!--静态资源处理-->
-   <mvc:default-servlet-handler />
-   <!--开启注解-->
-   <mvc:annotation-driven  />
+    <!--加载数据库配置文件及mybatis配置 -->
+    <import resource="classpath*:dal.xml"/>
 
-   <!--
-       <import resource="classpath*:shiro.xml"/>-->
+    <!--bean注入规则-->
+    <import resource="classpath*:bean.xml"/>
+    <!-- 注解扫描包 -->
+    <context:component-scan base-package="com.ttwb.historyArchive"/>
+    <!--静态资源处理-->
+    <mvc:default-servlet-handler/>
+    <!--开启注解-->
+    <mvc:annotation-driven/>
 
-    <!-- 验证码生成器 -->
-   <!-- <bean id="imageCaptchaService" class="com.octo.captcha.service.image.DefaultManageableImageCaptchaService">
-        <constructor-arg type="com.octo.captcha.service.captchastore.CaptchaStore" index="0">
-            <ref bean="fastHashMapCaptchaStore"/>
-        </constructor-arg>
-        &lt;!&ndash;which captcha Engine you use&ndash;&gt;
-        <constructor-arg type="com.octo.captcha.engine.CaptchaEngine" index="1">
-            <ref bean="captchaEngineEx"/>
-        </constructor-arg>
-        <constructor-arg index="2">
-            <value>180</value>
-        </constructor-arg>
-        <constructor-arg index="3">
-            <value>100000</value>
-        </constructor-arg>
-        <constructor-arg index="4">
-            <value>75000</value>
-        </constructor-arg>
-    </bean>
-    <bean id="fastHashMapCaptchaStore" class="com.octo.captcha.service.captchastore.FastHashMapCaptchaStore"/>
-    <bean id="captchaEngineEx" class="com.fjrlkj.safety.web.util.CaptchaEngineEx"/>
-
-    &lt;!&ndash; spring 全局异常处理 &ndash;&gt;
-    <bean id="exceptionHandler" class="com.fjrlkj.safety.web.util.ExceptionHandler"/>
-
-    <bean id="currentUser" class="com.fjrlkj.safety.web.util.CurrentUser"/>-->
 
 </beans>

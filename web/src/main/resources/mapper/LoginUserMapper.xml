@@ -3,45 +3,64 @@
 <mapper namespace="com.ttwb.historyArchive.serv.mapper.LoginUserMapper">
     <resultMap id="BaseResultMap" type="com.ttwb.historyArchive.serv.model.pv.UserPageView">
     </resultMap>
-   <!-- <delete id="deleteByName" parameterType="string">
-    delete from TEST_USER
-    where "USER_NAME" = #{name,jdbcType=NVARCHAR}
-    </delete>
+    <insert id="insertUserInfo" parameterType="com.ttwb.historyArchive.serv.model.pv.UserPageView">
+        <selectKey resultType="java.lang.String" order="BEFORE" keyProperty="userId">
+            SELECT TT_BASE.SEQ_T_USER_ID.NEXTVAL FROM DUAL
+        </selectKey>
+        INSERT INTO TT_BASE.T_USER (
+        userid ,
+        username ,
+        password ,
+        npolice_id ,
+        zxbz
+        )
+        VALUES
+        (
+        #{userId,jdbcType=VARCHAR},
+        #{userName,jdbcType=VARCHAR},
+        #{password,jdbcType=VARCHAR},
+        #{npoliceId,jdbcType=VARCHAR},
+        '0'
+        )
 
-    <select id="getUser" resultMap="BaseResultMap">
-        SELECT 'aa' userName ,'12' age
-        FROM dual
+    </insert>
+    <update id="updateUserInfo" parameterType="com.ttwb.historyArchive.serv.model.pv.UserPageView">
+      UPDATE TT_BASE.T_USER SET
+        username   =#{userName,jdbcType=VARCHAR},
+        password   =#{password,jdbcType=VARCHAR},
+        npolice_id =#{npoliceId,jdbcType=VARCHAR},
+        zxbz=#{zxbz,jdbcType=VARCHAR}
+       WHERE USERID=#{userId}
+    </update>
+
+    <delete id="deleteUserInfo" parameterType="java.lang.String">
+     delete from TT_BASE.T_USER
+     where USERID = #{userId,jdbcType=NVARCHAR}
+     </delete>
+
+
+    <select id="selectUserList" resultType="com.ttwb.historyArchive.serv.model.pv.UserPageView">
+        SELECT USERID userId,USERNAME userName,PASSWORD password,NPOLICE_ID npoliceId,zxbz zxbz
+        FROM TT_BASE.T_USER
         WHERE 1=1
-    </select>
 
-
-    <select id="selectUserList" resultMap="BaseResultMap">
-        SELECT USER_NAME userName,Age age
-        FROM TEST_USER
-        WHERE 1=1
-
-        <if test="age != null">
-            <![CDATA[
-                    AND age > #{age}
-                ]]>
+        <if test="userName != null">
+            and USERNAME=#{userName}
         </if>
-        order by age desc
 
 
-    </select>-->
+    </select>
     <select id="selectUserByName" resultType="com.ttwb.historyArchive.serv.model.pv.UserPageView">
         select USERID userId,USERNAME userName,PASSWORD password,NPOLICE_ID npoliceId,zxbz zxbz
          from TT_BASE.T_USER
         WHERE 1=1
-        <if test="userName != null">
             and USERNAME=#{userName}
-        </if>
-        <if test="password != null">
             and PASSWORD=#{password}
-        </if>
         <![CDATA[
         and rownum<2
-          ]]>
+
+        ]]>
     </select>
+
 
 </mapper>
