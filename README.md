@@ -11,6 +11,9 @@
 7. github
 
 
+ create user TT_BASE identified by TT_BASE;
+ grant connect, resource,dba to TT_BASE;
+
 # tomcat
 
 # <Context docBase="D:\Tomcat\apache-tomcat-8.5.20.1\webapps\history-archive" path="/"  ></Context>
