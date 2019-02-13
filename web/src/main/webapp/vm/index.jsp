@@ -94,49 +94,12 @@
 						<i class="fa fa-power-off"></i>
 						<cite>退出</cite>
 					</a>
-					<!--<a href="javascript:;">
-						<img src="images/face.jpg" class="layui-nav-img userAvatar" width="35" height="35">
-						<cite class="adminName"></cite>
-					</a>
-					<dl class="layui-nav-child">
-						<dd>
-							<a href="javascript:;" data-url="page/user/userInfo.html">
-								<i class="fa fa-user"></i>
-								<cite>个人资料</cite>
-							</a>
-						</dd>
-						<dd>
-							<a href="javascript:;" id="chage-pwd">
-								<i class="fa fa-lock"></i>
-								<cite>修改密码</cite>
-							</a>
-						</dd>
-						<dd>
-							<a href="javascript:;" class="showNotice">
-								<i class="fa fa-bullhorn"></i>
-								<cite>系统公告</cite>
-								<span class="layui-badge-dot"></span>
-							</a>
-						</dd>
-						<dd>
-							<a href="/gxjzz/jsp/logout.jsp" class="signOut">
-								<i class="fa fa-power-off"></i>
-								<cite>退出</cite>
-							</a>
-						</dd>
-					</dl>-->
+
 				</li>
 			</ul>
 		</div>
 		<div class="layui-side layui-bg-black" id="admin-side">
-			<!--<div class="layui-form component">
-				<div class="search-menu-back">
-					<input type="text" placeholder="菜单名称 / url" value="" id="menuSearch" class="layui-input menu-search">
-					<span class="menu-search-clear" style="display: block;">
-						<i class="layui-icon">ဆ</i>
-					</span>
-				</div>
-			</div>-->
+
 			<div class="layui-side-scroll" id="admin-navbar-side" lay-filter="side"></div>
 		</div>
 		<div class="layui-body" style="bottom: 0;border-left: solid 2px #1AA094;" id="admin-body">
@@ -149,7 +112,6 @@
 				</ul>
 				<div class="layui-tab-content" style="min-height: 150px; padding: 5px 0 0 0;">
 					<div class="layui-tab-item layui-show" id="defualt-ifm">
-						<!-- <iframe id="cent-iframe" src="default.jsp"></iframe>-->
 						<iframe id="cent-iframe" src="demo/demo-1.html"></iframe>
 					</div>
 				</div>

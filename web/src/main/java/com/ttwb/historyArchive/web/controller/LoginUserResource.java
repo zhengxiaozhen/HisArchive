@@ -1,4 +1,4 @@
-package com.ttwb.historyArchive.web.resouces.login;
+package com.ttwb.historyArchive.web.controller;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
@@ -27,7 +27,7 @@ import javax.ws.rs.core.Response;
 @Component
 @Produces(MediaType.APPLICATION_JSON)
 @Path("/login")
-public  class LoginUserReource
+public  class LoginUserResource
 {
 
     @Autowired

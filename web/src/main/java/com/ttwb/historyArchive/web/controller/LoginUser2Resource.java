@@ -1,4 +1,4 @@
-package com.ttwb.historyArchive.web.resouces.login;
+package com.ttwb.historyArchive.web.controller;
 
 import com.ttwb.historyArchive.serv.model.User;
 import com.ttwb.historyArchive.serv.model.pv.UserPageView;
@@ -25,7 +25,7 @@ import javax.ws.rs.core.MediaType;
 @Component
 @Produces(MediaType.APPLICATION_JSON)
 @RequestMapping("/login")
-public class LoginUser2Reource
+public class LoginUser2Resource
 {
 
     @Autowired
