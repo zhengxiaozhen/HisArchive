@@ -13,6 +13,9 @@
 
  create user TT_BASE identified by TT_BASE;
  grant connect, resource,dba to TT_BASE;
+ 
+ # tomcat配置
+https://www.cnblogs.com/libo0125ok/p/7773898.html
 
 # tomcat
 
