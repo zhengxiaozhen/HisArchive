@@ -17,6 +17,9 @@
  # tomcat配置
 https://www.cnblogs.com/libo0125ok/p/7773898.html
 
+# maven 本地lib 加入 maven仓库
+mvn install:install-file -Dfile=D:\WorkSpaces\HisArchive\pdf\lib\iTextAsian.jar -DgroupId=com.itextpdf -DartifactId=itext-asian -Dversion=1.0 -Dpackaging=jar -DgeneratePom=true -DcreateChecksum=true
+
 # tomcat
 
 # <Context docBase="D:\Tomcat\apache-tomcat-8.5.20.1\webapps\history-archive" path="/"  ></Context>
