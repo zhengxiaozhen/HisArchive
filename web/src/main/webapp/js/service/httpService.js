@@ -1,4 +1,4 @@
-var HttpService = function(){
+;(var HttpService = function(){
    var POST = function(url,para,callback,noNeedLoading){
         //alert(url);
         var config = {
@@ -279,6 +279,8 @@ var HttpService = function(){
     }
 }
 var httpService = new HttpService();
+window.httpService = httpService;
+)();
 
 
 
