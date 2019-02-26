@@ -278,8 +278,7 @@
         DELETE2:DELETE2
     }
 }
-var httpService = new HttpService();
-window.httpService = httpService;
+window.httpService = HttpService;
 )();
 
 
